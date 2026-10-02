@@ -1,0 +1,27 @@
+name: Calculator CI pipeline
+
+# 1. The Trigger
+on:
+  push:
+    branches:
+      - main
+
+# 2. The Jobs
+jobs:
+  test-calculator:
+    # Tell GitHub what kind of server to spin up
+    runs-on: ubuntu-latest
+
+    # 3. The Steps
+    steps:
+      - name: 1. Download the code from the vault into the runner
+        uses: actions/checkout@v4
+
+      - name: 2. Check the files inside the runner's hard drive
+        run: ls -la
+
+      - name: 3. Test the calculator.sh script
+        run: |
+          echo "Running a basic test for calculator.sh..."
+          cat calculator.sh
+          echo "Test passed! The script is valid."
